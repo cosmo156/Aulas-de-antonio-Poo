@@ -1,27 +1,13 @@
 package jogo;
 
-public class Pocao {
-    private String nome;
-    private int cura;
+public class Pocao extends Item {
 
-    public Pocao(String nome, int cura) {
-        this.nome = nome;
-        this.cura = cura;
+
+    public Pocao(String nome, int poder, int consumoMana) {
+        super(nome, poder, consumoMana);
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getCura() {
-        return cura;
-    }
-
-    public void setCura(int cura) {
-        this.cura = cura;
+    public Pocao(String nome, int poder) {
+        super(nome, poder);
     }
 }

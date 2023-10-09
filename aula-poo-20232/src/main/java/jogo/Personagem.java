@@ -57,18 +57,20 @@ public class Personagem {
             outro.receberDano(1);
             return;
         }
-
-        System.out.printf("%s atacou %s com %s%n",
-                this.getNome(), outro.getNome(), arma.getNome());
-        outro.receberDano(arma.getDano());
+        this.setMana(this.getMana() - arma.getConsumoMana());
+        System.out.printf("%s atacou %s com %s gastou %d de mana (Mana: %d).%n",
+                this.getNome(), outro.getNome(), arma.getNome(), arma.getConsumoMana(),this.getMana());
+        outro.receberDano(arma.getPoder()+arma.getConsumoMana());
     }
 
     public void recuperarVida(Pocao pocao) {
-        this.setVida(this.getVida() + pocao.getCura());
-        System.out.printf("%s tomou %s e recuperou %d pontos de vida.%n",
-                this.getNome(), pocao.getNome(), pocao.getCura());
+        this.setVida(this.getVida() + (pocao.getPoder()+pocao.getConsumoMana()));
+        this.setMana(this.getMana() - pocao.getConsumoMana());
+        System.out.printf("%s tomou %s, recuperou %d pontos de vida e gastou %d do mana (Vida: %d), (Mana: %d).%n",
+                this.getNome(), pocao.getNome(), (pocao.getPoder()+ pocao.getConsumoMana()), pocao.getConsumoMana(),this.getVida(), this.getMana());
     }
     public void reiniciarVida(){
         this.setVida(100);
+        this.setMana(100);
     }
 }

@@ -1,4 +1,4 @@
-package conta;
+/*package conta;
 
 public class Banco {
     public ContaBancaria conta1;
@@ -39,4 +39,4 @@ public class Banco {
         destino.depositar(valor);
     }
 }
-// http://10.12.128.248:8080
+// http://10.12.128.248:8080*/

@@ -1,27 +1,11 @@
 package jogo;
 
-public class Arma {
-    private String nome;
-    private int dano;
+public class Arma extends Item{
 
-    public Arma(String nome, int dano) {
-        this.nome = nome;
-        this.dano = dano;
+    public Arma(String nome, int poder, int consumoMana) {
+        super(nome, poder, consumoMana);
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getDano() {
-        return dano;
-    }
-
-    public void setDano(int dano) {
-        this.dano = dano;
+    public Arma(String nome, int poder) {
+        super(nome, poder);
     }
 }

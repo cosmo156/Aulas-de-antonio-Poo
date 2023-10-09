@@ -6,17 +6,12 @@ public class Main {
         Personagem barriga = new Personagem("Seu Barriga");
         Personagem madruga = new Personagem("Seu Madruga");
         Arma peixeira = new Arma("Peixeira", 20);
+        Arma faca = new Arma("Faca Enferrujada", 20,20);
         Arma chinela = new Arma("Chinela havaiana", 10);
-        Pocao corote = new Pocao("Corote", 5);
-        Pocao tGe51 = new Pocao("51 com Tira Gosto", 10); //Tira Gosto com 51 cura
+        Pocao corote = new Pocao("Corote", 5); //corote cura 5 de vida
+        Pocao tGe51 = new Pocao("51 com Tira Gosto", 10,20); //Tira Gosto com 51 cura 10 de vida e consome 20 de mana
 
 
-        //barriga.setArma(peixeira);
-       // madruga.setArma(chinela);
-
-       // barriga.atacar(madruga);
-       // madruga.recuperarVida(corote);
-       // madruga.atacar(barriga);
 
         Scanner teclado = new Scanner(System.in);
         boolean executando = true;
@@ -48,17 +43,17 @@ public class Main {
                         }
                         else {
 
-
+                            faca.setPoder(20);
                             System.out.printf("1- %s atacar %s\n", madruga.getNome(), barriga.getNome());
-                            System.out.printf("2 - %s atacar %s\n", barriga.getNome(), madruga.getNome());
-                            System.out.printf("3 - %s Recuperar vida\n", madruga.getNome());
-                            System.out.printf("4 - %s Recuperar vida\n", barriga.getNome());
+                            System.out.printf("2- %s atacar %s\n", barriga.getNome(), madruga.getNome());
+                            System.out.printf("3- %s Recuperar vida\n", madruga.getNome());
+                            System.out.printf("4- %s Recuperar vida\n", barriga.getNome());
                             System.out.print("Digite uma opção: ");
                             int opic = teclado.nextInt();
                             switch (opic) {
                                 case 1:
 
-                                    System.out.printf("Escolha a arma:\n1- %s\n2-%s\n", peixeira.getNome(), chinela.getNome());
+                                    System.out.printf("Escolha a arma:\n1- %s\n2- %s\n3- %s\n", peixeira.getNome(), chinela.getNome(), faca.getNome());
                                     System.out.print("Opção: ");
                                     int armaOpc = teclado.nextInt();
 
@@ -71,6 +66,19 @@ public class Main {
                                             madruga.setArma(chinela);
                                             madruga.atacar(barriga);
                                             break;
+                                        case 3:
+                                            if(madruga.getMana() >= (faca.getPoder()+ faca.getConsumoMana())){
+                                                faca.setPoder(faca.getConsumoMana());
+                                                madruga.setArma(faca);
+                                                madruga.atacar(barriga);
+                                            }
+                                            else{
+                                                faca.setPoder(20);
+                                                madruga.setArma(faca);
+                                                madruga.atacar(barriga);
+
+                                            }
+                                            break;
                                         default:
                                             System.out.println("Arma inválida!!!");
                                             break;
@@ -78,7 +86,7 @@ public class Main {
                                     break;
 
                                 case 2:
-                                    System.out.printf("Escolha a arma:\n1- %s\n2-%s\n", peixeira.getNome(), chinela.getNome());
+                                    System.out.printf("Escolha a arma:\n1- %s\n2- %s\n3- %s\n", peixeira.getNome(), chinela.getNome(), faca.getNome());
                                     System.out.print("Opção: ");
                                     int armaOpc2 = teclado.nextInt();
                                     switch (armaOpc2) {
@@ -89,6 +97,20 @@ public class Main {
                                         case 2:
                                             barriga.setArma(chinela);
                                             barriga.atacar(madruga);
+                                            break;
+                                        case 3:
+
+                                            if(barriga.getMana() >= (faca.getPoder()+ faca.getConsumoMana())){
+                                                faca.setPoder(faca.getConsumoMana());
+                                                barriga.setArma(faca);
+                                                barriga.atacar(madruga);
+                                            }
+                                            else{
+                                                faca.setPoder(20);
+                                                barriga.setArma(faca);
+                                                barriga.atacar(madruga);
+
+                                            }
                                             break;
                                         default:
                                             System.out.println("Arma inválida!!");
